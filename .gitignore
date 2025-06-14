@@ -1,0 +1,3 @@
+*.txt
+collector/__pycache__/
+collector/modules/__pycache__/
