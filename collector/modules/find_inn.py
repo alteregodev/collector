@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup
 
 
 def find(fio):
+    found = ''
+
     url_fio = fio.replace(' ', '+')
     url = f"https://www.list-org.com/search?type=fio&val={url_fio}"
 
@@ -38,8 +40,10 @@ def find(fio):
 
         if count != '0':
             print(f"\n[+] Найдено {count} ИП по ФИО {fio}")
+            found += f"\n[+] Найдено {count} ИП по ФИО {fio}"
         else:
             print(f"\n[+] Не найдено ИП по ФИО {fio}")
+            found += f"\n[+] Не найдено ИП по ФИО {fio}"
 
         results_list = results_card.find_all('p')
         for result in results_list:
@@ -52,6 +56,9 @@ def find(fio):
             text = a.text.strip()
 
             print(f"(http://list-org.com{details}) | {inn}")
+            found += f"\n(http://list-org.com{details}) | {inn}"
     except Exception as e:
         print(f"[!] Ошибка во время получения ИП: {e}")
+        return ''
 
+    return found

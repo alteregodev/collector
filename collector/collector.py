@@ -1,6 +1,7 @@
 import argparse
 
 from collector.modules.find_inn import find
+from collector.modules.save import save
 
 def main():
     parser = argparse.ArgumentParser()
@@ -10,8 +11,11 @@ def main():
 
     args = parser.parse_args()
 
+    filename = ''
+
     fio = args.FIO
-    filename = args.FILENAME
+    if args.FILENAME != None:
+        filename = args.FILENAME + '.txt' if not '.txt' in args.FILENAME else args.FILENAME
 
     banner = '''
                  888 888                   888                    
@@ -27,4 +31,6 @@ Y88b.   Y88..88P 888 888 Y8b.     Y88b.    Y88b. Y88..88P 888
     
     print(banner)
 
-    find(fio)
+    results = find(fio)
+    if filename:
+        save(filename, results)
