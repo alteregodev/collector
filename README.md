@@ -19,3 +19,9 @@
 ### Источники
 
 -   list-org.com - Поиск ИП
+-   duckduckgo_search - Python библиотека для поиска в DuckDuckGo
+
+#### Фото
+
+![image](https://github.com/user-attachments/assets/11901b14-66d7-422d-a585-15d860a34f4f)
+
