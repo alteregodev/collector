@@ -34,6 +34,10 @@ def find(fio):
         html = requests.get(url, timeout=10, headers=headers).text
         soup = BeautifulSoup(html, 'lxml')
 
+        if "Проверка, что Вы не робот" in html:
+            print("\n[!] Проверка на робота от list-org.com, попробуйте сменить/выключить VPN")
+            return found
+
         results_card = soup.find(class_='content')
 
         count = results_card.find('b').text
@@ -42,8 +46,8 @@ def find(fio):
             print(f"\n[+] Найдено {count} ИП по ФИО {fio}")
             found += f"\n[+] Найдено {count} ИП по ФИО {fio}"
         else:
-            print(f"\n[+] Не найдено ИП по ФИО {fio}")
-            found += f"\n[+] Не найдено ИП по ФИО {fio}"
+            print(f"\n[X] Не найдено ИП по ФИО {fio}")
+            found += f"\n[X] Не найдено ИП по ФИО {fio}"
 
         results_list = results_card.find_all('p')
         for result in results_list:

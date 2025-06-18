@@ -1,6 +1,7 @@
 import argparse
 
 from collector.modules.find_inn import find
+from collector.modules.ddg import search
 from collector.modules.save import save
 
 def main():
@@ -31,6 +32,6 @@ Y88b.   Y88..88P 888 888 Y8b.     Y88b.    Y88b. Y88..88P 888
     
     print(banner)
 
-    results = find(fio)
+    results = find(fio) + search(fio)
     if filename:
         save(filename, results)
