@@ -43,6 +43,8 @@ def search(fio, keywords=[]):
                 file_results = ddgs.text(files_query)
                 if file_results:
                     for r in file_results:
+                        if 'http://www.google.com/search?' in r["href"]:
+                            continue
                         print(f"\n{r['href']} | {r['title']}")
                         found += f"\n\n{r['href']} | {r['title']}"
 
