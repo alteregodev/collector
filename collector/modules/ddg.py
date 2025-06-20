@@ -38,6 +38,7 @@ def search(fio, keywords=[]):
             print("\n[+] Результаты поиска по файлам в DuckDuckGo")
             found += "\n\n[+] Результаты поиска по файлам в DuckDuckGo"
 
+            time.sleep(0.5)
             for files_query in files_queries:
                 time.sleep(0.5)
                 file_results = ddgs.text(files_query)
@@ -49,7 +50,7 @@ def search(fio, keywords=[]):
                         found += f"\n\n{r['href']} | {r['title']}"
 
     except DuckDuckGoSearchException:
-        print("\n[!] Слишком много запросов в DuckDuckGo, попробуйте сменить VPN")
-        found += "\n\n[!] Слишком много запросов в DuckDuckGo, попробуйте сменить VPN"
+        print("\n[!] Слишком много запросов в DuckDuckGo, попробуйте сменить айпи")
+        found += "\n\n[!] Слишком много запросов в DuckDuckGo, попробуйте сменить айпи"
 
     return found

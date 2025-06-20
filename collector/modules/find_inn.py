@@ -35,35 +35,35 @@ def find(fio):
         soup = BeautifulSoup(html, 'lxml')
 
         if "Проверка, что Вы не робот" in html:
-            print("\n[!] Блокировка ботов от list-org.com, попробуйте сменить/выключить VPN")
+            print("\n[!] Блокировка ботов от list-org.com, попробуйте сменить айпи")
             return found
 
         results_card = soup.find(class_='content')
 
         count = results_card.find('b').text
 
-        if count != '0':
+        if count != '0' and int(count) < 24100000:
             print(f"\n[+] Найдено {count} ИП по ФИО {fio}")
             found += f"\n[+] Найдено {count} ИП по ФИО {fio}"
+
+            results_list = results_card.find_all('p')
+            for result in results_list:
+                inn = result.text.strip()
+                a = result.find('a')
+                if a is None:
+                    continue
+
+                details = a.get('href', '')
+                text = a.text.strip()
+
+                print(f"(http://list-org.com{details}) | {inn}")
+                found += f"\n(http://list-org.com{details}) | {inn}"
         else:
             print(f"\n[X] Не найдено ИП по ФИО {fio}")
             found += f"\n[X] Не найдено ИП по ФИО {fio}"
-
-        results_list = results_card.find_all('p')
-        for result in results_list:
-            inn = result.text.strip()
-            a = result.find('a')
-            if a is None:
-                continue
-
-            details = a.get('href', '')
-            text = a.text.strip()
-
-            print(f"(http://list-org.com{details}) | {inn}")
-            found += f"\n(http://list-org.com{details}) | {inn}"
     except Exception as e:
         if f"{e}".strip() == "'NoneType' object has no attribute 'find'":
-            print("\n[!] Блокировка ботов от list-org.com, попробуйте сменить/выключить VPN")
+            print("\n[!] Блокировка ботов от list-org.com, попробуйте сменить айпи")
         else:
             print(f"[!] Ошибка во время получения ИП: {e}")
         return found
