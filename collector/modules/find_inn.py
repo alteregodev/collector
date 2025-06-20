@@ -35,7 +35,7 @@ def find(fio):
         soup = BeautifulSoup(html, 'lxml')
 
         if "Проверка, что Вы не робот" in html:
-            print("\n[!] Блокировка ботов от list-org.com, попробуйте сменить айпи")
+            print("\n[!] Блокировка ботов от list-org.com, попробуйте cменить айпи")
             return found
 
         results_card = soup.find(class_='content')
@@ -64,7 +64,9 @@ def find(fio):
     except Exception as e:
         if f"{e}".strip() == "'NoneType' object has no attribute 'find'":
             print("\n[!] Блокировка ботов от list-org.com, попробуйте сменить айпи")
+            found += f"\n[!] Блокировка ботов от list-org.com, попробуйте сменить айпи"
         else:
             print(f"[!] Ошибка во время получения ИП: {e}")
+            found += f"\n[!] Ошибка во время получения ИП: {e}"
         return found
     return found
