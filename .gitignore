@@ -2,3 +2,4 @@
 !requirements.txt
 collector/__pycache__/
 collector/modules/__pycache__/
+venv/
