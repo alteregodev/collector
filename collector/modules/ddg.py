@@ -1,7 +1,7 @@
 import time
 
-from duckduckgo_search.exceptions import *
-from duckduckgo_search import DDGS
+from ddgs.exceptions import *
+from ddgs import DDGS
 
 
 def search(fio, keywords=[]):
