@@ -8,7 +8,7 @@
 
 -   Войдите в директорию склонированного репозитория - `cd collector`
 
--   Установите необходимые библиотеки - `python -m pip install -r requirements.txt`
+-   Установите необходимые библиотеки - `pip install -r requirements.txt`
 
 ## Использование
 
