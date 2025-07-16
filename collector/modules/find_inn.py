@@ -1,7 +1,11 @@
 import requests
 import random
 
-from bs4 import BeautifulSoup
+
+try:
+    from bs4 import BeautifulSoup
+except ModuleNotFoundError:
+    raise Exception("[!] Зависимости не найдены, вы можете установить их командой pip/pip3 install -r requirements.txt")
 
 
 def find(fio):

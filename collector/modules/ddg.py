@@ -1,7 +1,10 @@
 import time
 
-from ddgs.exceptions import *
-from ddgs import DDGS
+try:
+    from ddgs.exceptions import *
+    from ddgs import DDGS
+except ModuleNotFoundError:
+    raise Exception("[!] Зависимости не найдены, вы можете установить их командой pip/pip3 install -r requirements.txt")
 
 
 def search(fio, keywords=[]):
