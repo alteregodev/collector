@@ -9,20 +9,20 @@ except ModuleNotFoundError:
 
 def search(fio, keywords=[]):
     found = ''
-    ks = " ".join(f"\"{keyword}\"" for keyword in keywords)
+    ks = " + ".join(f"\"{keyword}\"" for keyword in keywords)
 
     query = (f"\"{fio}\" " + ks)
 
     files_queries = [
-        "filetype:pdf " + f"\"{fio}\"" + ks,
-        "filetype:doc " + f"\"{fio}\"" + ks,
-        "filetype:docx " + f"\"{fio}\"" + ks,
-        "filetype:ppt " + f"\"{fio}\"" + ks,
-        "filetype:pptx " + f"\"{fio}\"" + ks,
-        "filetype:csv " + f"\"{fio}\"" + ks,
-        "filetype:xls " + f"\"{fio}\"" + ks,
-        "filetype:xlsx " + f"\"{fio}\"" + ks,
-        "filetype:txt " + f"\"{fio}\"" + ks
+        "filetype:pdf " + query,
+        "filetype:doc " + query,
+        "filetype:docx " + query,
+        "filetype:ppt " + query,
+        "filetype:pptx " + query,
+        "filetype:csv " + query,
+        "filetype:xls " + query,
+        "filetype:xlsx " + query,
+        "filetype:txt " + query
     ]
 
     try:
@@ -41,7 +41,6 @@ def search(fio, keywords=[]):
             print("\n[+] Результаты поиска по файлам в DuckDuckGo")
             found += "\n\n[+] Результаты поиска по файлам в DuckDuckGo"
 
-            time.sleep(0.5)
             for files_query in files_queries:
                 time.sleep(0.5)
                 file_results = ddgs.text(files_query)
