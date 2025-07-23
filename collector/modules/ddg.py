@@ -51,8 +51,7 @@ def search(fio, keywords=[]):
                         print(f"\n{r['href']} | {r['title']}")
                         found += f"\n\n{r['href']} | {r['title']}"
 
-    except DuckDuckGoSearchException:
-        print("\n[!] Слишком много запросов в DuckDuckGo, попробуйте сменить айпи")
-        found += "\n\n[!] Слишком много запросов в DuckDuckGo, попробуйте сменить айпи"
+    except Exception as e:
+        print(f"\n[!] Произошла ошибка: {e}")
 
     return found
