@@ -24,7 +24,7 @@ def main():
             print('[!] Укажите корректное ФИО')
             return
     
-    if len(fio.strip().split()) < 3:
+    if (len(fio.strip().split()) < 3) or (len(fio.strip().split()) > 3):
         print('[!] Укажите корректное ФИО')
         return
 
