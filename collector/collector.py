@@ -18,11 +18,15 @@ def main():
 
     fio = args.FIO
 
-    special_symbols = r"!@#$%^&*()'\"\\?=+*/~][{}"
+    special_symbols = r"!@#$%^&*()'\"\\?=+*/~][{}.,``"
     for symbol in special_symbols:
         if symbol in fio:
             print('[!] Укажите корректное ФИО')
             return
+    
+    if len(fio.strip().split()) < 3:
+        print('[!] Укажите корректное ФИО')
+        return
 
     if args.FILENAME != None:
         filename = args.FILENAME + '.txt' if not '.txt' in args.FILENAME else args.FILENAME
