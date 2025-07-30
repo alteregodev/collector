@@ -19,7 +19,7 @@
 ### Источники
 
 -   list-org.com - Поиск ИП
--   ddgs - Python библиотека для поиска в DuckDuckGo
+-   DuckDuckGo
 
 #### Фото
 
